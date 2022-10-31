@@ -1,0 +1,41 @@
+<div class="row">
+    <h1>Consulta Usuario</h1>
+</div>
+<form [formGroup]="contactForm" (ngSubmit)="onFindForm()">
+  <div class="container">
+    <div class="row">
+      <div class="mb-3">
+        <input type="text" formControlName="fieldfind" class="form-control" name="fieldfind">
+      </div>
+      <div class="mb-3">
+        <button id="btnSubmit" type="submit" color="primary">Consultar</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">login</th>
+			<th scope="col">id</th>
+			<th scope="col">url</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let user of users; index as i">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>
+				<img
+					[src]="user.avatar_url"
+					class="me-2"
+					style="width: 20px"
+				/>
+				{{ user.login }}
+			</td>
+			<td>{{ user.id }}</td>
+			<td>{{ user.html_url }}</td>
+		</tr>
+	</tbody>
+</table>
